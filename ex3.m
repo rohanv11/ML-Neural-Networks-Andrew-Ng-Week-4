@@ -81,6 +81,7 @@ pause;
 
 
 %% ================ Part 3: Predict for One-Vs-All ================
+% runtime 16 mins on my acer
 
 pred = predictOneVsAll(all_theta, X);
 
