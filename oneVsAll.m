@@ -49,6 +49,30 @@ X = [ones(m, 1) X];
 %                 initial_theta, options);
 %
 
+% classifier_classes = [1:9 0]
+
+disp('Num labels');
+disp(num_labels) % 10
+
+for iter=1: num_labels
+
+
+	initial_theta = zeros(n + 1, 1);
+
+	%y_for_current_classifier = y == iter
+
+	% not needed J, grad = lrCostFunction(X, y_for_current_classifier, lambda)
+	
+
+	options = optimset('GradObj', 'on', 'MaxIter', 50);
+
+	[theta] = fmincg (@(t)(lrCostFunction(t, X, y == iter, lambda)), ...
+		 initial_theta, options);
+
+
+	all_theta(iter, :) = theta
+
+end
 
 
 
