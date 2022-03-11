@@ -28,11 +28,27 @@ X = [ones(m, 1) X];
 %       max element, for more information see 'help max'. If your examples 
 %       are in rows, then, you can use max(A, [], 2) to obtain the max 
 %       for each row.
-%       
+% 
 
+% X = 5000 by 401
+% all_theta = 10 by 401
 
+p = X * all_theta' % 5000 by 10
+% thus, we get a 5000 by 10 matrix whose each row
+% consists of probabilities by 10 classifiers for each training example,
+% and highest one is our best shot
 
+% in all_theta 
+% 1st column gives probability of 1
+% 2nd column gives probability of 2
+% ...
+% 9th column gives probability of 9
+% 10th column gives probability of 10
+% whichever columns probability is high, the prediction of number is the numvber which is represented by that column as above
 
+[values, indices] = max(p, [], 2)
+
+p = indices
 
 
 
