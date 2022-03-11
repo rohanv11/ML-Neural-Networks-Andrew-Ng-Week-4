@@ -37,16 +37,18 @@ grad = zeros(size(theta));
 %
 
 
+hypothesis = sigmoid(X * theta)
 
+regularization_term = (lambda / (2 * m)) * sum(theta(2: end, :) .^ 2) 
 
-
-
-
+J = (1 / m) * (-y' * (log(hypothesis)) -(1 - y)' * (log(1 - hypothesis)) ) + regularization_term
 
 
 
 % =============================================================
 
-grad = grad(:);
+grad(1, 1) = (1 / m) * (hypothesis - y)' * X(:, 1)
+
+grad(2:end, 1) = (1 / m) * ((hypothesis - y)' * X(:, 2:end))' + (lambda / m) * theta(2:end, 1)
 
 end
